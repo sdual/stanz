@@ -1,0 +1,17 @@
+# IntelliJ.
+.idea/
+
+# os generated files.
+.DS_Store
+
+# sbt.
+target/
+*.class
+.history
+
+# data
+*.csv
+
+# ensime
+.ensime
+.ensime_cache/
