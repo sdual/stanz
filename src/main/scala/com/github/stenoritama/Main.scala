@@ -1,5 +1,5 @@
 package com.github.stenoritama
 
-class Main {
-
+object Main extends App {
+  println("stanz")
 }
