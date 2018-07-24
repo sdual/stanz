@@ -3,9 +3,7 @@ package com.github.stenoritama.stanz.distribution
 import com.github.stenoritama.stanz.Probability
 import com.github.stenoritama.stanz.typeclass.Monad
 
-trait Distribution[P] {
-  ???
-}
+trait Distribution[P]
 
 object Distribution {
   case class Point[P](value: P) extends Distribution[P]
@@ -16,7 +14,7 @@ object Distribution {
 
 trait DistributionInstance {
 
-  implicit val distributionInstance = new Monad[Distribution] {
+  implicit val distributionInstance: Monad[Distribution] = new Monad[Distribution] {
     override def pure[A](v: => A): Distribution[A] = Distribution.Point(v)
     override def flatMap[A, B](fa: Distribution[A])(f: A => Distribution[B]): Distribution[B] =
       Distribution.FlatMap(fa, f)
