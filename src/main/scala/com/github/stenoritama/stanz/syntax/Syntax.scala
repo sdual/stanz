@@ -43,10 +43,4 @@ trait ToSampleableOps {
     new SampleableOps[D](v)
 }
 
-trait ToApplicative
-
-trait ToMonad
-
-trait ToSampleable
-
-trait ToTypeClass extends ToFunctorOps with ToApplicative with ToMonad with ToSampleable
+trait ToTypeClassOps extends ToFunctorOps with ToApplicativeOps with ToMonadOps with ToSampleableOps
