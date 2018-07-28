@@ -6,6 +6,6 @@ trait Sampleable[A] {
   def sample(random: Random): A
 }
 
-trait DistMonadSampleable[T[_]] {
+trait DistMonadSampleable {
   def sample[A](dist: Distribution[A])(random: Random): A
 }
