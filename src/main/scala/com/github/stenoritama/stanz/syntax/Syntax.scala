@@ -1,6 +1,6 @@
 package com.github.stenoritama.stanz.syntax
 
-import com.github.stenoritama.stanz.distribution.{DistMonadSampleable, Distribution, Sampleable}
+import com.github.stenoritama.stanz.distribution.{DistMonadSampleable, Distribution}
 import com.github.stenoritama.stanz.typeclass.{Applicative, Functor, Monad}
 
 import scala.util.Random
