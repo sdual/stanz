@@ -3,15 +3,15 @@ package com.github.stenoritama.stanz.algorithm
 import com.github.stenoritama.stanz.Probability
 import com.github.stenoritama.stanz.Stanz._
 import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.distribution.{Bernoulli, Distribution, MetropolisHastingsPrior, Prior}
+import com.github.stenoritama.stanz.distribution.{Bernoulli, Distribution, PriorDistribution}
 
 import scala.annotation.tailrec
 
-class MetropolisHastings(prior: Prior) {
+class MetropolisHastings(prior: PriorDistribution) {
 
   def run[A](n: Int, d: Distribution[A]): Distribution[List[A]] = {
 
-    val proposal: Distribution[(A, Probability)] = prior.prior(d)
+    val proposal: Distribution[(A, Probability)] = prior.proposal(d)
 
     @tailrec
     def iterate(i: Int, prob: Distribution[List[(A, Probability)]]): Distribution[List[(A, Probability)]] = {
@@ -39,6 +39,6 @@ class MetropolisHastings(prior: Prior) {
 }
 
 object MetropolisHastings {
-  val prior: Prior = MetropolisHastingsPrior()
+  val prior: PriorDistribution = PriorDistribution()
   def apply(): MetropolisHastings = new MetropolisHastings(prior)
 }
