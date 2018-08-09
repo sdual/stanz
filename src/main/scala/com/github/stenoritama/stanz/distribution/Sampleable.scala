@@ -6,6 +6,10 @@ trait Sampleable[A] extends Distribution[A] {
   def sample(random: Random): A
 }
 
-trait DistMonadSampleable {
-  def sample[A](dist: Distribution[A])(random: Random): A
+trait DistMonadSampleable[F[_]] {
+  def sample[A](fa: F[A])(random: Random): A
+}
+
+object DistMonadSampleable {
+  def apply[F[_]](implicit F: DistMonadSampleable[F]): Distribution[F] = F
 }

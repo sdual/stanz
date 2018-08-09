@@ -39,7 +39,7 @@ object Distribution {
 
 trait DistributionInstance {
 
-  implicit val distributionInstance: Monad[Distribution] = new Monad[Distribution] with DistMonadSampleable {
+  implicit val distributionInstance: Monad[Distribution] with DistMonadSampleable[Distribution] = new Monad[Distribution] with DistMonadSampleable[Distribution] {
 
     override def pure[A](v: => A): Distribution[A] = Distribution.Point(v)
 
