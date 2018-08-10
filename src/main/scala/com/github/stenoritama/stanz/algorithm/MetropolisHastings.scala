@@ -2,8 +2,9 @@ package com.github.stenoritama.stanz.algorithm
 
 import com.github.stenoritama.stanz.Probability
 import com.github.stenoritama.stanz.Stanz._
+import com.github.stenoritama.stanz.distribution.Distribution.Primitive
 import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.distribution.{Bernoulli, Distribution, PriorDistribution}
+import com.github.stenoritama.stanz.distribution.{Bernoulli, Distribution, PrimitiveDistribution, PriorDistribution}
 
 import scala.annotation.tailrec
 
@@ -23,7 +24,7 @@ class MetropolisHastings(prior: PriorDistribution) {
             (v1, p1) = p.head
             prop <- proposal
             (v2, p2) = prop
-            isAccepted <- Bernoulli(1.0 min p2 / p1)
+            isAccepted <- PrimitiveDistribution.bernoulli(1.0 min p2 / p1)
             next = if (isAccepted) (v2, p2) else (v1, p1)
           } yield next :: p
           iterate(i - 1, nextDist)

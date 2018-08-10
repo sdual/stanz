@@ -1,27 +1,40 @@
 package com.github.stenoritama.stanz.distribution
 
 import com.github.stenoritama.stanz.Probability
+import com.github.stenoritama.stanz.distribution.Distribution.Primitive
 
 import scala.util.Random
 
-class Bernoulli(prob: Probability) extends Sampleable[Boolean] {
-  def sample(random: Random): Boolean = {
+trait PrimitiveDistribution[A] {
+  def sample2(random: Random): A
+}
+
+object PrimitiveDistribution {
+
+  def bernoulli(prob: Probability): Distribution[Boolean] = Primitive(Bernoulli(prob))
+
+  def gaussian(mean: Double, stdDev: Double): Distribution[Double] = Primitive(Gaussian(mean, stdDev))
+
+}
+
+class Bernoulli(prob: Probability) extends PrimitiveDistribution[Boolean] {
+  def sample2(random: Random): Boolean = {
     prob > random.nextDouble()
   }
 }
 
 object Bernoulli {
-  def apply(prob: Probability): Distribution[Boolean] = new Bernoulli(prob)
+  def apply(prob: Probability):PrimitiveDistribution[Boolean] = new Bernoulli(prob)
 }
 
-class Normal(mean: Double, stdDev: Double) extends Sampleable[Double] {
-  def sample(random: Random): Double = {
+class Gaussian(mean: Double, stdDev: Double) extends PrimitiveDistribution[Double] {
+  def sample2(random: Random): Double = {
     val sampled = random.nextGaussian()
     (stdDev * sampled) + mean
   }
 }
 
-object Normal {
-  def apply(mean: Probability, stdDev: Probability): Distribution[Double] =
-    new Normal(mean, stdDev)
+object Gaussian {
+  def apply(mean: Probability, stdDev: Probability): PrimitiveDistribution[Double] =
+    new Gaussian(mean, stdDev)
 }
