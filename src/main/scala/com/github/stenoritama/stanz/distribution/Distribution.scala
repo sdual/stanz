@@ -25,9 +25,9 @@ object Distribution {
         case fm1: FlatMap[A, _] => fm1.dist match {
           case pt2: Point[A]      => loop(fm1.f(pt2.value), random)
           case fm2: FlatMap[A, _] => loop(fm2.dist flatMap (a => fm2.f(a) flatMap fm1.f), random)
-          case pr2: Primitive[A]  => loop(fm1.f(pr2.fa.sample2(random)), random)
+          case pr2: Primitive[A]  => loop(fm1.f(pr2.fa.sample(random)), random)
         }
-        case pr1: Primitive[A] => pr1.fa.sample2(random)
+        case pr1: Primitive[A] => pr1.fa.sample(random)
         case _ => throw new Exception("can't sample.")
       }
     }

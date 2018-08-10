@@ -6,7 +6,7 @@ import com.github.stenoritama.stanz.distribution.Distribution.Primitive
 import scala.util.Random
 
 trait PrimitiveDistribution[A] {
-  def sample2(random: Random): A
+  def sample(random: Random): A
 }
 
 object PrimitiveDistribution {
@@ -18,7 +18,7 @@ object PrimitiveDistribution {
 }
 
 class Bernoulli(prob: Probability) extends PrimitiveDistribution[Boolean] {
-  def sample2(random: Random): Boolean = {
+  def sample(random: Random): Boolean = {
     prob > random.nextDouble()
   }
 }
@@ -28,7 +28,7 @@ object Bernoulli {
 }
 
 class Gaussian(mean: Double, stdDev: Double) extends PrimitiveDistribution[Double] {
-  def sample2(random: Random): Double = {
+  def sample(random: Random): Double = {
     val sampled = random.nextGaussian()
     (stdDev * sampled) + mean
   }
