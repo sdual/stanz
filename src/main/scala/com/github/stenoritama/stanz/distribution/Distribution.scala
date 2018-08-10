@@ -1,7 +1,7 @@
 package com.github.stenoritama.stanz.distribution
 
 import com.github.stenoritama.stanz.Probability
-import com.github.stenoritama.stanz.typeclass.Monad
+import com.github.stenoritama.stanz.typeclass.{MonadSampleable, Monad}
 import com.github.stenoritama.stanz.Stanz._
 import com.github.stenoritama.stanz.distribution.DistributionInstance._
 
@@ -39,7 +39,7 @@ object Distribution {
 
 trait DistributionInstance {
 
-  implicit val distributionInstance: Monad[Distribution] with DistMonadSampleable[Distribution] = new Monad[Distribution] with DistMonadSampleable[Distribution] {
+  implicit val distributionInstance: Monad[Distribution] with MonadSampleable[Distribution] = new Monad[Distribution] with MonadSampleable[Distribution] {
 
     override def pure[A](v: => A): Distribution[A] = Distribution.Point(v)
 

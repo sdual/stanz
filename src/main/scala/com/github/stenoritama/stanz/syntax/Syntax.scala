@@ -1,7 +1,6 @@
 package com.github.stenoritama.stanz.syntax
 
-import com.github.stenoritama.stanz.distribution.DistMonadSampleable
-import com.github.stenoritama.stanz.typeclass.{Applicative, Functor, Monad}
+import com.github.stenoritama.stanz.typeclass.{Applicative, MonadSampleable, Functor, Monad}
 
 import scala.util.Random
 
@@ -19,7 +18,7 @@ class MonadOps[M[_], T](val self: M[T])(implicit val M: Monad[M]) {
   final def flatMap[U](f: T => M[U]): M[U] = M.flatMap(self)(f)
 }
 
-class DistMonadSampleableOps[S[_], T](val self: S[T])(implicit val S: DistMonadSampleable[S]) {
+class DistMonadSampleableOps[S[_], T](val self: S[T])(implicit val S: MonadSampleable[S]) {
   final def sample(random: Random): T = S.sample(self)(random)
 }
 
@@ -39,7 +38,7 @@ trait ToMonadOps {
 }
 
 trait ToDistMonadSampleableOps {
-  implicit def ToDistMonadSampleable[S[_], T](v: S[T])(implicit D0: DistMonadSampleable[S]): DistMonadSampleableOps[S, T] =
+  implicit def ToDistMonadSampleable[S[_], T](v: S[T])(implicit D0: MonadSampleable[S]): DistMonadSampleableOps[S, T] =
     new DistMonadSampleableOps[S, T](v)
 }
 
