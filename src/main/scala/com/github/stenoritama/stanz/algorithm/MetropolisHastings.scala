@@ -2,9 +2,8 @@ package com.github.stenoritama.stanz.algorithm
 
 import com.github.stenoritama.stanz.Probability
 import com.github.stenoritama.stanz.Stanz._
-import com.github.stenoritama.stanz.distribution.Distribution.Primitive
 import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.distribution.{Bernoulli, Distribution, PrimitiveDistribution, PriorDistribution}
+import com.github.stenoritama.stanz.distribution.{Distribution, PrimitiveDistribution, PriorDistribution}
 
 import scala.annotation.tailrec
 
