@@ -3,7 +3,7 @@ package com.github.stenoritama.stanz.algorithm
 import com.github.stenoritama.stanz.Probability
 import com.github.stenoritama.stanz.Stanz._
 import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.distribution.{Distribution, PrimitiveDistribution, PriorDistribution}
+import com.github.stenoritama.stanz.distribution.{Distribution, PrimitiveDistribution}
 
 import scala.annotation.tailrec
 
@@ -39,6 +39,6 @@ class MetropolisHastings(prior: PriorDistribution) {
 }
 
 object MetropolisHastings {
-  val prior: PriorDistribution = PriorDistribution()
+  val prior: PriorDistribution = PriorDistributionImpl()
   def apply(): MetropolisHastings = new MetropolisHastings(prior)
 }
