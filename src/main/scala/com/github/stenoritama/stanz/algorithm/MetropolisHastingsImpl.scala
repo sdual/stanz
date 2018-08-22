@@ -7,7 +7,7 @@ import com.github.stenoritama.stanz.distribution.{Distribution, PrimitiveDistrib
 
 import scala.annotation.tailrec
 
-class MetropolisHastings(prior: PriorDistribution) {
+class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHastings {
 
   def run[A](n: Int, d: Distribution[A]): Distribution[List[A]] = {
 
@@ -38,7 +38,7 @@ class MetropolisHastings(prior: PriorDistribution) {
 
 }
 
-object MetropolisHastings {
+object MetropolisHastingsImpl {
   val prior: PriorDistribution = PriorDistributionImpl()
-  def apply(): MetropolisHastings = new MetropolisHastings(prior)
+  def apply(): MetropolisHastings = new MetropolisHastingsImpl(prior)
 }
