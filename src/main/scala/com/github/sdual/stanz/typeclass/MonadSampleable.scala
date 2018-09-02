@@ -1,4 +1,4 @@
-package com.github.stenoritama.stanz.typeclass
+package com.github.sdual.stanz.typeclass
 
 import scala.util.Random
 

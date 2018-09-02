@@ -1,9 +1,9 @@
-package com.github.stenoritama.stanz.distribution
+package com.github.sdual.stanz.distribution
 
-import com.github.stenoritama.stanz.Probability
-import com.github.stenoritama.stanz.typeclass.{MonadSampleable, Monad}
-import com.github.stenoritama.stanz.Stanz._
-import com.github.stenoritama.stanz.distribution.DistributionInstance._
+import com.github.sdual.stanz.Probability
+import com.github.sdual.stanz.Stanz._
+import com.github.sdual.stanz.distribution.DistributionInstance._
+import com.github.sdual.stanz.typeclass.{Monad, MonadSampleable}
 
 import scala.annotation.tailrec
 import scala.util.Random

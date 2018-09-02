@@ -1,7 +1,7 @@
-package com.github.stenoritama.stanz.distribution
+package com.github.sdual.stanz.distribution
 
-import com.github.stenoritama.stanz.Probability
-import com.github.stenoritama.stanz.distribution.Distribution.Primitive
+import com.github.sdual.stanz.Probability
+import com.github.sdual.stanz.distribution.Distribution.Primitive
 
 import scala.util.Random
 

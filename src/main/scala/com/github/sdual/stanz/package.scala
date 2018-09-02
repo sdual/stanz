@@ -1,4 +1,4 @@
-package com.github.stenoritama
+package com.github.sdual
 
 package object stanz {
   type Probability = Double

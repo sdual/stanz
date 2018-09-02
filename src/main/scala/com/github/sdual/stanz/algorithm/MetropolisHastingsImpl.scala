@@ -1,9 +1,9 @@
-package com.github.stenoritama.stanz.algorithm
+package com.github.sdual.stanz.algorithm
 
-import com.github.stenoritama.stanz.Probability
-import com.github.stenoritama.stanz.Stanz._
-import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.distribution.{Distribution, PrimitiveDistribution}
+import com.github.sdual.stanz.Probability
+import com.github.sdual.stanz.Stanz._
+import com.github.sdual.stanz.distribution.DistributionInstance._
+import com.github.sdual.stanz.distribution.{Distribution, PrimitiveDistribution}
 
 import scala.annotation.tailrec
 

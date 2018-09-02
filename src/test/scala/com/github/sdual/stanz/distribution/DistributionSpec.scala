@@ -1,8 +1,8 @@
-package com.github.stenoritama.stanz.distribution
+package com.github.sdual.stanz.distribution
 
-import com.github.stenoritama.stanz.Stanz._
-import com.github.stenoritama.stanz.distribution.DistributionInstance._
-import com.github.stenoritama.stanz.typeclass.Monad
+import com.github.sdual.stanz.Stanz._
+import com.github.sdual.stanz.distribution.DistributionInstance._
+import com.github.sdual.stanz.typeclass.Monad
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{Matchers, WordSpec}
 

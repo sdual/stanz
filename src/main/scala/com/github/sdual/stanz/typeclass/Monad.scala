@@ -1,4 +1,4 @@
-package com.github.stenoritama.stanz.typeclass
+package com.github.sdual.stanz.typeclass
 
 trait Monad[T[_]] extends Applicative[T] {
   def point[A](a: => A): T[A] = pure(a)

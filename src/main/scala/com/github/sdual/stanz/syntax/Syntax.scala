@@ -1,6 +1,6 @@
-package com.github.stenoritama.stanz.syntax
+package com.github.sdual.stanz.syntax
 
-import com.github.stenoritama.stanz.typeclass.{Applicative, MonadSampleable, Functor, Monad}
+import com.github.sdual.stanz.typeclass.{Applicative, Functor, Monad, MonadSampleable}
 
 import scala.util.Random
 
