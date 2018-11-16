@@ -1,4 +1,7 @@
 # stanz
+
+[![Build Status](https://travis-ci.org/sdual/stanz.svg?branch=master)](https://travis-ci.org/sdual/stanz)
+
 Stanz is a scala library for purely functional Bayesian analysis.
 
 ## References
