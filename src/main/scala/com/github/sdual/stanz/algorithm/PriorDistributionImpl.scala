@@ -5,6 +5,7 @@ import com.github.sdual.stanz.distribution.Distribution
 
 class PriorDistributionImpl extends PriorDistribution {
   def proposal[A](dist: Distribution[A]): Distribution[(A, Probability)] = {
+    //def loop(): T
     ???
   }
 }
