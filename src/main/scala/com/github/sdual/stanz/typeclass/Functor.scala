@@ -1,17 +1,17 @@
 package com.github.sdual.stanz.typeclass
 
-trait Functor[T[_]] {
-  def map[A, B](fa: T[A])(f: A => B): T[B]
+trait Functor[F[_]] {
+  def map[A, B](fa: F[A])(f: A => B): F[B]
 }
 object Functor {
-  def apply[T[_]](implicit T: Functor[T]): Functor[T] = T
+  def apply[F[_]](implicit T: Functor[F]): Functor[F] = T
 }
 
-trait Applicative[T[_]] extends Functor[T] {
-  def pure[A](a: => A): T[A]
-  def ap[A, B](fa: => T[A])(f: => T[A => B]): T[B]
+trait Applicative[F[_]] extends Functor[F] {
+  def pure[A](a: => A): F[A]
+  def ap[A, B](fa: => F[A])(f: => F[A => B]): F[B]
 }
 
 object Applicative {
-  def apply[T[_]](implicit T: Applicative[T]): Applicative[T] = T
+  def apply[F[_]](implicit T: Applicative[F]): Applicative[F] = T
 }
