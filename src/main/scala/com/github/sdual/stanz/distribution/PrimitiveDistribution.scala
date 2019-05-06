@@ -24,7 +24,7 @@ class Bernoulli(prob: Probability) extends PrimitiveDistribution[Boolean] {
 }
 
 object Bernoulli {
-  def apply(prob: Probability):PrimitiveDistribution[Boolean] = new Bernoulli(prob)
+  def apply(prob: Probability): PrimitiveDistribution[Boolean] = new Bernoulli(prob)
 }
 
 class Gaussian(mean: Double, stdDev: Double) extends PrimitiveDistribution[Double] {
