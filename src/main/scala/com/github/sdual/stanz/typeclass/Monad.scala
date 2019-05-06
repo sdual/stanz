@@ -1,10 +1,10 @@
 package com.github.sdual.stanz.typeclass
 
-trait Monad[T[_]] extends Applicative[T] {
-  def point[A](a: => A): T[A] = pure(a)
-  def flatMap[A, B](fa: T[A])(f: A => T[B]): T[B]
+trait Monad[F[_]] extends Applicative[F] {
+  def point[A](a: => A): F[A] = pure(a)
+  def flatMap[A, B](fa: F[A])(f: A => F[B]): F[B]
 }
 
 object Monad {
-  def apply[T[_]](implicit T: Monad[T]): Monad[T] = T
+  def apply[F[_]](implicit M: Monad[F]): Monad[F] = M
 }
