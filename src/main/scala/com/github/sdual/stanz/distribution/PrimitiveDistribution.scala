@@ -36,6 +36,6 @@ class Gaussian(mean: Double, stdDev: Double) extends PrimitiveDistribution[Doubl
 }
 
 object Gaussian {
-  def apply(mean: Probability, stdDev: Probability): PrimitiveDistribution[Double] =
+  def apply(mean: Double, stdDev: Double): PrimitiveDistribution[Double] =
     new Gaussian(mean, stdDev)
 }

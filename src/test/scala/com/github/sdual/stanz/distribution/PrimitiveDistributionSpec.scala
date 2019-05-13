@@ -29,4 +29,19 @@ class PrimitiveDistributionSpec extends WordSpec with Matchers with MockFactory 
       }
     }
   }
+
+  "Gaussian" when {
+    "sample method" should {
+
+      "return a value sampled from Gaussian distribution" in {
+        val randomMock: Random = mock[Random]
+        (randomMock.nextGaussian _).expects().returning(0.5)
+        val dist: PrimitiveDistribution[Double] = Gaussian(0.0, 1.0)
+        val actual: Double = dist.sample(randomMock)
+
+        actual should be(0.5)
+      }
+    }
+
+  }
 }
