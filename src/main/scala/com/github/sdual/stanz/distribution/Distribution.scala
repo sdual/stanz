@@ -2,7 +2,6 @@ package com.github.sdual.stanz.distribution
 
 import com.github.sdual.stanz.Probability
 import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.distribution.DistributionInstance._
 import com.github.sdual.stanz.typeclass.{Monad, MonadSampleable}
 
 import scala.annotation.tailrec
