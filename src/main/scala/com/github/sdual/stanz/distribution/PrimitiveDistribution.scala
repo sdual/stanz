@@ -1,7 +1,8 @@
 package com.github.sdual.stanz.distribution
 
 import com.github.sdual.stanz.Probability
-import com.github.sdual.stanz.distribution.Distribution.Primitive
+import com.github.sdual.stanz.monad.Distribution
+import com.github.sdual.stanz.monad.Distribution.Primitive
 
 import scala.util.Random
 
