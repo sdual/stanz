@@ -26,7 +26,7 @@ sealed trait Free[S[+ _], A] {
   }
 
   final def runT(implicit ev: Free[S, A] => Trampoline[A]): A = {
-    ev(this).go(_())
+    ev(this).go(_ ())
   }
 
   private def go(f: S[Free[S, A]] => Free[S, A])(implicit S: Functor[S]): A = {
@@ -35,6 +35,7 @@ sealed trait Free[S[+ _], A] {
       case Left(l) => go2(f(l))
       case Right(r) => r
     }
+
     go2(this)
   }
 }
@@ -50,5 +51,13 @@ object Free {
   case class FlatMap[S[+ _], A, B](a: Free[S, A], f: A => Free[S, B]) extends Free[S, B]
 
   type Trampoline[A] = Free[Function0, A]
+
+}
+
+object Trampoline {
+
+  def done[A](a: A): Trampoline[A] = Free.Done(a)
+
+  def more[A](k: => Trampoline[A]): Trampoline[A] = Free.More(() => k)
 
 }
