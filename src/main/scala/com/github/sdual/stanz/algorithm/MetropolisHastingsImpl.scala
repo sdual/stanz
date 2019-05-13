@@ -2,9 +2,14 @@ package com.github.sdual.stanz.algorithm
 
 import com.github.sdual.stanz.Probability
 import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.distribution.{Distribution, PrimitiveDistribution}
+import com.github.sdual.stanz.distribution.PrimitiveDistribution
+import com.github.sdual.stanz.monad.Distribution
 
 import scala.annotation.tailrec
+
+trait MetropolisHastings {
+  def run[A](n: Int, d: Distribution[A]): Distribution[List[A]]
+}
 
 class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHastings {
 
@@ -18,7 +23,7 @@ class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHasting
         case 0 => prob
         case _ =>
           val nextDist = for {
-            p    <- prob
+            p <- prob
             (v1, p1) = p.head
             prop <- proposal
             (v2, p2) = prop
@@ -39,5 +44,6 @@ class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHasting
 
 object MetropolisHastingsImpl {
   val prior: PriorDistribution = PriorDistributionImpl()
+
   def apply(): MetropolisHastings = new MetropolisHastingsImpl(prior)
 }
