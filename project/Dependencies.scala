@@ -9,6 +9,7 @@ object Dependencies {
   val stanzDependencies = Seq(
     apacheCommonsMath,
     scalaTest % Test,
-    scalaMock % Test)
+    scalaMock % Test
+  )
 
 }
