@@ -8,14 +8,14 @@ import com.github.sdual.stanz.monad.Distribution
 import scala.annotation.tailrec
 
 trait MetropolisHastings {
-  def run[A](n: Int, d: Distribution[A]): Distribution[List[A]]
+  def run[A](num: Int, dist: Distribution[A]): Distribution[List[A]]
 }
 
 class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHastings {
 
-  def run[A](n: Int, d: Distribution[A]): Distribution[List[A]] = {
+  def run[A](num: Int, dist: Distribution[A]): Distribution[List[A]] = {
 
-    val proposal: Distribution[(A, Probability)] = prior.proposal(d)
+    val proposal: Distribution[(A, Probability)] = prior.proposal(dist)
 
     @tailrec
     def iterate(i: Int, prob: Distribution[List[(A, Probability)]]): Distribution[List[(A, Probability)]] = {
@@ -35,7 +35,7 @@ class MetropolisHastingsImpl(prior: PriorDistribution) extends MetropolisHasting
     }
 
     for {
-      result <- iterate(n, proposal.map(x => List(x)))
+      result <- iterate(num, proposal.map(x => List(x)))
     } yield result.map(x => x._1)
 
   }
