@@ -6,16 +6,22 @@ lazy val commonSettings = Seq(
   scalaVersion        := "2.12.8",
 )
 
-lazy val stanzCore = (project in file("core"))
+lazy val root = (project in file("."))
+  .aggregate(
+    core, 
+    example
+  )
+
+lazy val core = (project in file("core"))
   .settings(
     commonSettings,
     name                := "stanz",
     libraryDependencies ++= stanzDependencies,
   )
 
-lazy val stanzExample = (project in file("example"))
+lazy val example = (project in file("example"))
   .settings(
     commonSettings,
     name                := "example",
     libraryDependencies ++= stanzDependencies,
-  ).dependsOn(stanzCore)
+  ).dependsOn(core)

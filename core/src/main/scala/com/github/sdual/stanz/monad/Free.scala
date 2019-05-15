@@ -10,7 +10,7 @@ sealed trait Free[S[+ _], A] {
 
   def flatMap[B](f: A => Free[S, B]): Free[S, B] = Free.FlatMap(this, f)
 
-  def map[B](f: A => B): Free[S, B] = flatMap(a => Free.Point(f(a)))
+  def map[B](f: A => B): Free[S, B] = flatMap(a => Free.Done(f(a)))
 
   @tailrec
   final def resume(implicit S: Functor[S]): Either[S[Free[S, A]], A] = {
@@ -21,6 +21,7 @@ sealed trait Free[S[+ _], A] {
         case Free.Done(value) => f(value).resume
         case Free.More(k) => Left(S.map(k)(_ flatMap f))
         case Free.FlatMap(b, g) => b.flatMap((x: Any) => g(x) flatMap f).resume
+        case other => throw new IllegalArgumentException(other.toString)
       }
     }
   }
@@ -45,8 +46,6 @@ object Free {
   case class Done[S[+ _], A](a: A) extends Free[S, A]
 
   case class More[S[+ _], A](k: S[Free[S, A]]) extends Free[S, A]
-
-  case class Point[S[+ _], A](value: A) extends Free[S, A]
 
   case class FlatMap[S[+ _], A, B](a: Free[S, A], f: A => Free[S, B]) extends Free[S, B]
 
