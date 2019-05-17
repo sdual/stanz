@@ -13,19 +13,22 @@ trait Distribution[+P]
 object Distribution {
 
   case class Point[P](value: P) extends Distribution[P]
+
   case class FlatMap[P0, P1](dist: Distribution[P0], f: P0 => Distribution[P1]) extends Distribution[P1]
+
   case class Primitive[P](fa: PrimitiveDistribution[P]) extends Distribution[P]
+
   case class Conditional[P](dist: Distribution[P], likelihood: P => Probability) extends Distribution[P]
 
   def sample[A](dist: Distribution[A])(random: Random): A = {
     @tailrec
     def loop(dist: Distribution[A], random: Random): A = {
       dist match {
-        case pt1: Point[A]      => pt1.value
+        case pt1: Point[A] => pt1.value
         case fm1: FlatMap[A, _] => fm1.dist match {
-          case pt2: Point[A]      => loop(fm1.f(pt2.value), random)
+          case pt2: Point[A] => loop(fm1.f(pt2.value), random)
           case fm2: FlatMap[A, _] => loop(fm2.dist flatMap (a => fm2.f(a) flatMap fm1.f), random)
-          case pr2: Primitive[A]  => loop(fm1.f(pr2.fa.sample(random)), random)
+          case pr2: Primitive[A] => loop(fm1.f(pr2.fa.sample(random)), random)
         }
         case pr1: Primitive[A] => pr1.fa.sample(random)
         case _ => throw new Exception("can't sample.")
@@ -39,7 +42,8 @@ object Distribution {
 
 trait DistributionInstance {
 
-  implicit val distributionInstance: Monad[Distribution] with MonadSampleable[Distribution] = new Monad[Distribution] with MonadSampleable[Distribution] {
+  implicit val distributionInstance: Monad[Distribution] with MonadSampleable[Distribution] =
+    new Monad[Distribution] with MonadSampleable[Distribution] {
 
     override def pure[A](v: => A): Distribution[A] = Distribution.Point(v)
 
