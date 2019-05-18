@@ -18,7 +18,7 @@ object LinearRegression extends App {
   val r = new Random
   val n = 100000
 
-  val ps = points(createTrainingData(), linear())
+  val ps: Distribution[(Double, Double)] = points(createTrainingData(), linear())
 
   val sampled = mh.run(n, ps).sample(r)
 
