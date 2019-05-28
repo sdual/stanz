@@ -3,7 +3,7 @@ package com.github.sdual.stanz.monad
 import com.github.sdual.stanz.Probability
 import com.github.sdual.stanz.Stanz._
 import com.github.sdual.stanz.distribution.PrimitiveDistribution
-import com.github.sdual.stanz.typeclass.{Monad, MonadSampleable}
+import com.github.sdual.stanz.typeclass.{Monad, Sampleable}
 
 import scala.annotation.tailrec
 import scala.util.Random
@@ -42,8 +42,8 @@ object Distribution {
 
 trait DistributionInstance {
 
-  implicit val distributionInstance: Monad[Distribution] with MonadSampleable[Distribution] =
-    new Monad[Distribution] with MonadSampleable[Distribution] {
+  implicit val distributionInstance: Monad[Distribution] with Sampleable[Distribution] =
+    new Monad[Distribution] with Sampleable[Distribution] {
 
     override def pure[A](v: => A): Distribution[A] = Distribution.Point(v)
 

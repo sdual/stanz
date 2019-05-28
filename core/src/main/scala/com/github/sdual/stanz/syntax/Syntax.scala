@@ -1,6 +1,6 @@
 package com.github.sdual.stanz.syntax
 
-import com.github.sdual.stanz.typeclass.{Applicative, Functor, Monad, MonadSampleable}
+import com.github.sdual.stanz.typeclass.{Applicative, Functor, Monad, Sampleable}
 
 import scala.util.Random
 
@@ -18,7 +18,7 @@ class MonadOps[M[_], T](val self: M[T])(implicit val M: Monad[M]) {
   final def flatMap[U](f: T => M[U]): M[U] = M.flatMap(self)(f)
 }
 
-class DistMonadSampleableOps[S[_], T](val self: S[T])(implicit val S: MonadSampleable[S]) {
+class DistMonadSampleableOps[S[_], T](val self: S[T])(implicit val S: Sampleable[S]) {
   final def sample(random: Random): T = S.sample(self)(random)
 }
 
@@ -38,7 +38,7 @@ trait ToMonadOps {
 }
 
 trait ToDistMonadSampleableOps {
-  implicit def ToDistMonadSampleable[S[_], T](v: S[T])(implicit D0: MonadSampleable[S]): DistMonadSampleableOps[S, T] =
+  implicit def ToDistMonadSampleable[S[_], T](v: S[T])(implicit D0: Sampleable[S]): DistMonadSampleableOps[S, T] =
     new DistMonadSampleableOps[S, T](v)
 }
 
