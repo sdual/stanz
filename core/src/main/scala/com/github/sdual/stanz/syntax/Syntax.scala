@@ -18,7 +18,7 @@ class MonadOps[M[_], T](val self: M[T])(implicit val M: Monad[M]) {
   final def flatMap[U](f: T => M[U]): M[U] = M.flatMap(self)(f)
 }
 
-class DistMonadSampleableOps[S[_], T](val self: S[T])(implicit val S: Sampleable[S]) {
+class SampleableOps[S[_], T](val self: S[T])(implicit val S: Sampleable[S]) {
   final def sample(random: Random): T = S.sample(self)(random)
 }
 
@@ -37,9 +37,9 @@ trait ToMonadOps {
     new MonadOps[M, T](v)
 }
 
-trait ToDistMonadSampleableOps {
-  implicit def ToDistMonadSampleable[S[_], T](v: S[T])(implicit D0: Sampleable[S]): DistMonadSampleableOps[S, T] =
-    new DistMonadSampleableOps[S, T](v)
+trait ToSampleableOps {
+  implicit def ToSampleable[S[_], T](v: S[T])(implicit D0: Sampleable[S]): SampleableOps[S, T] =
+    new SampleableOps[S, T](v)
 }
 
-trait ToTypeClassOps extends ToFunctorOps with ToApplicativeOps with ToMonadOps with ToDistMonadSampleableOps
+trait ToTypeClassOps extends ToFunctorOps with ToApplicativeOps with ToMonadOps with ToSampleableOps
