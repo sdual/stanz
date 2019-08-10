@@ -1,4 +1,4 @@
-package com.github.sdual.stanz.monad
+package com.github.sdual.stanz.functor
 
 import com.github.sdual.stanz.typeclass.Functor
 
