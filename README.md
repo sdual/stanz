@@ -20,8 +20,8 @@ val ps: Distribution[(Double, Double)] = points(createTrainingData(), linear())
 val sampled = mh.run(n, ps).sample(r)
 ```
 
-![param-a](images/param-a.png)
-![param-b](images/param-b.png)
+![param-a](docs/images/param-a.png)
+![param-b](docs/images/param-b.png)
 
 
 ## References
