@@ -1,5 +1,8 @@
 import Dependencies._
 
+import scala.scalanative.sbtplugin.ScalaNativePlugin
+
+
 lazy val commonSettings = Seq(
   organization        := "com.github.sdual",
   version             := "0.1.0-SNAPSHOT",
@@ -10,7 +13,7 @@ lazy val root = (project in file("."))
   .aggregate(
     core, 
     example
-  )
+  ).enablePlugins(ScalaNativePlugin)
 
 lazy val core = (project in file("core"))
   .settings(
