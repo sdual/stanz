@@ -1,9 +1,9 @@
 import Dependencies._
 
 lazy val commonSettings = Seq(
-  organization        := "com.github.sdual",
-  version             := "0.1.0-SNAPSHOT",
-  scalaVersion        := "2.12.8",
+  organization := "com.github.sdual",
+  version      := "0.1.0-SNAPSHOT",
+  scalaVersion := "2.12.8",
 )
 
 lazy val root = (project in file("."))
