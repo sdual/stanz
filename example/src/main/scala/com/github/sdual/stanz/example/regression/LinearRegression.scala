@@ -2,12 +2,12 @@ package com.github.sdual.stanz.example.regression
 
 import java.io.{File, FileOutputStream, OutputStreamWriter}
 
-import com.github.sdual.stanz.Probability
-import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.algorithm.{MetropolisHastings, MetropolisHastingsImpl}
-import com.github.sdual.stanz.distribution.Gaussian
-import com.github.sdual.stanz.monad.Distribution
-import com.github.sdual.stanz.monad.Distribution.{Conditional, Primitive}
+import com.github.sdual.stanz.prototype.Probability
+import com.github.sdual.stanz.prototype.Stanz._
+import com.github.sdual.stanz.prototype.algorithm.{MetropolisHastings, MetropolisHastingsImpl}
+import com.github.sdual.stanz.prototype.distribution.Gaussian
+import com.github.sdual.stanz.prototype.monad.Distribution
+import com.github.sdual.stanz.prototype.monad.Distribution.{Conditional, Primitive}
 import org.apache.commons.math3.distribution.NormalDistribution
 
 import scala.util.Random

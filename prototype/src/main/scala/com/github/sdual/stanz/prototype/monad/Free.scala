@@ -1,8 +1,8 @@
-package com.github.sdual.stanz.monad
+package com.github.sdual.stanz.prototype.monad
 
-import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.monad.Free.Trampoline
-import com.github.sdual.stanz.typeclass.Functor
+import com.github.sdual.stanz.prototype.Stanz._
+import com.github.sdual.stanz.prototype.monad.Free.Trampoline
+import com.github.sdual.stanz.prototype.typeclass.Functor
 
 import scala.annotation.tailrec
 

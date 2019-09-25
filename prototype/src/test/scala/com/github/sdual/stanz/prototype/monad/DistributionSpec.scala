@@ -1,8 +1,8 @@
-package com.github.sdual.stanz.monad
+package com.github.sdual.stanz.prototype.monad
 
-import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.distribution.PrimitiveDistribution
-import com.github.sdual.stanz.typeclass.Monad
+import com.github.sdual.stanz.prototype.Stanz._
+import com.github.sdual.stanz.prototype.distribution.PrimitiveDistribution
+import com.github.sdual.stanz.prototype.typeclass.Monad
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{Matchers, WordSpec}
 

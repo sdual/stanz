@@ -1,10 +1,10 @@
-package com.github.sdual.stanz.algorithm
+package com.github.sdual.stanz.prototype.algorithm
 
-import com.github.sdual.stanz.Probability
-import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.monad.Distribution.Conditional
-import com.github.sdual.stanz.monad.Free.Trampoline
-import com.github.sdual.stanz.monad.{Distribution, Trampoline}
+import com.github.sdual.stanz.prototype.Probability
+import com.github.sdual.stanz.prototype.Stanz._
+import com.github.sdual.stanz.prototype.monad.Distribution.Conditional
+import com.github.sdual.stanz.prototype.monad.Free.Trampoline
+import com.github.sdual.stanz.prototype.monad.{Distribution, Trampoline}
 
 trait PriorDistribution {
   def proposal[A](dist: Distribution[A]): Distribution[(A, Probability)]
