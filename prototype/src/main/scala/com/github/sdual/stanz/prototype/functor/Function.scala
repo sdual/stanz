@@ -1,6 +1,6 @@
-package com.github.sdual.stanz.functor
+package com.github.sdual.stanz.prototype.functor
 
-import com.github.sdual.stanz.typeclass.Functor
+import com.github.sdual.stanz.prototype.typeclass.Functor
 
 trait Function0Instance {
   implicit val f0Functor: Functor[Function0] = new Functor[Function0] {

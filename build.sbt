@@ -1,5 +1,7 @@
 import Dependencies._
 
+scalacOptions += "-Ypartial-unification"
+
 lazy val commonSettings = Seq(
   organization := "com.github.sdual",
   version      := "0.1.0-SNAPSHOT",
@@ -8,27 +10,27 @@ lazy val commonSettings = Seq(
 
 lazy val root = (project in file("."))
   .aggregate(
-    prototype, 
+    prototype,
     example
   )
 
-lazy val core = (project in file("core")) 
+lazy val core = (project in file("core"))
   .settings(
     commonSettings,
     name                := "stanz",
-    libraryDependencies ++= stanzDependencies,
+    libraryDependencies ++= stanzCommonDependencies,
   )
 
 lazy val prototype = (project in file("prototype"))
   .settings(
     commonSettings,
     name                := "prototype",
-    libraryDependencies ++= stanzDependencies,
+    libraryDependencies ++= stanzCommonDependencies,
   )
 
 lazy val example = (project in file("example"))
   .settings(
     commonSettings,
     name                := "example",
-    libraryDependencies ++= stanzDependencies,
+    libraryDependencies ++= stanzCommonDependencies,
   ).dependsOn(prototype)

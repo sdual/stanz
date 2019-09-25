@@ -1,4 +1,4 @@
-package com.github.sdual.stanz.typeclass
+package com.github.sdual.stanz.prototype.typeclass
 
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(f: A => B): F[B]

@@ -1,9 +1,9 @@
-package com.github.sdual.stanz.monad
+package com.github.sdual.stanz.prototype.monad
 
-import com.github.sdual.stanz.Probability
-import com.github.sdual.stanz.Stanz._
-import com.github.sdual.stanz.distribution.PrimitiveDistribution
-import com.github.sdual.stanz.typeclass.{Monad, Sampleable}
+import com.github.sdual.stanz.prototype.Probability
+import com.github.sdual.stanz.prototype.Stanz._
+import com.github.sdual.stanz.prototype.distribution.PrimitiveDistribution
+import com.github.sdual.stanz.prototype.typeclass.{Monad, Sampleable}
 
 import scala.annotation.tailrec
 import scala.util.Random
