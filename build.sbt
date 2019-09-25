@@ -1,21 +1,28 @@
 import Dependencies._
 
 lazy val commonSettings = Seq(
-  organization        := "com.github.sdual",
-  version             := "0.1.0-SNAPSHOT",
-  scalaVersion        := "2.12.8",
+  organization := "com.github.sdual",
+  version      := "0.1.0-SNAPSHOT",
+  scalaVersion := "2.12.8",
 )
 
 lazy val root = (project in file("."))
   .aggregate(
-    core, 
+    prototype, 
     example
   )
 
-lazy val core = (project in file("core"))
+lazy val core = (project in file("core")) 
   .settings(
     commonSettings,
     name                := "stanz",
+    libraryDependencies ++= stanzDependencies,
+  )
+
+lazy val prototype = (project in file("prototype"))
+  .settings(
+    commonSettings,
+    name                := "prototype",
     libraryDependencies ++= stanzDependencies,
   )
 
@@ -24,4 +31,4 @@ lazy val example = (project in file("example"))
     commonSettings,
     name                := "example",
     libraryDependencies ++= stanzDependencies,
-  ).dependsOn(core)
+  ).dependsOn(prototype)
