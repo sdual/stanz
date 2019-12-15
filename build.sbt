@@ -1,6 +1,6 @@
 import Dependencies._
 
-scalacOptions += "-Ypartial-unification"
+scalacOptions ++= Seq("-Ypartial-unification", "-Ymacro-annotations")
 
 lazy val commonSettings = Seq(
   organization := "com.github.sdual",
