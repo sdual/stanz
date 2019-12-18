@@ -18,7 +18,7 @@ lazy val core = (project in file("core"))
   .settings(
     commonSettings,
     name                := "stanz",
-    libraryDependencies ++= stanzCommonDependencies,
+    libraryDependencies ++= stanzCoreDependencies,
   )
 
 lazy val prototype = (project in file("prototype"))
