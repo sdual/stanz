@@ -9,6 +9,9 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file("."))
+  .settings(
+    name := "stanz"
+  )
   .aggregate(
     prototype,
     example
@@ -17,7 +20,7 @@ lazy val root = (project in file("."))
 lazy val core = (project in file("core"))
   .settings(
     commonSettings,
-    name                := "stanz",
+    name                := "core",
     libraryDependencies ++= stanzCoreDependencies,
   )
 
